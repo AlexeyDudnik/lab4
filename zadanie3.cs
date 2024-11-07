@@ -52,6 +52,20 @@ class CarCollection
     {
         this.cars = cars;
     }
+    public IEnumerable<Car> ForwardIteration()
+    {
+        foreach (var car in cars)
+        {
+            yield return car;
+        }
+    }
+    public IEnumerable<Car> ReverseIteration()
+    {
+        for (int i = cars.Count - 1; i >= 0; i--)
+        {
+            yield return cars[i];
+        }
+    }
     public IEnumerable<Car> GetCarsByProductionYear(int year)
     {
         foreach (var car in cars)
@@ -79,7 +93,7 @@ class Program
     {
         List<Car> cars = new List<Car>
         {
-            new Car("Toyota", 2015, 220),
+            new Car("Toyota", 2015, 221),
             new Car("Honda", 2018, 210),
             new Car("Ford", 2012, 200),
             new Car("BMW", 2020, 250),
